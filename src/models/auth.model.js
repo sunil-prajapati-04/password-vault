@@ -2,6 +2,11 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const vaultUserSchema = new mongoose.Schema({
+    googleId:{
+        type:String,
+        unique:true,
+        sparse:true
+    },
     username:{
         type:String
     },

@@ -1,10 +1,14 @@
 import express from 'express';
+import passport from 'passport';
 import jwtAuthMiddleware from '../middelware/auth.middleware.js';
 import { otpLimiter } from '../middelware/limiter.js';
-import {signUp,requestOtpLogin,verifyOtpLogin,myProfile,updateProfile,logout} from '../controller/auth.controller.js';
+import {googleCallback,signUp,requestOtpLogin,verifyOtpLogin,myProfile,updateProfile,logout} from '../controller/auth.controller.js';
 
 
 const router = express.Router();
+
+router.get('/google',passport.authenticate('google',{ scope: ['profile', 'email'] }));
+router.get('/google/callback', passport.authenticate('google', { session: false }),googleCallback);
 
 router.post('/signup',signUp);
 router.post('/requestOtpLogin',otpLimiter,requestOtpLogin);

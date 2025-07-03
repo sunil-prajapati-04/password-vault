@@ -2,6 +2,30 @@ import User from '../models/auth.model.js';
 import { genToken } from '../lib/utlis.js';
 import { sendEmailOtp } from '../lib/sendEmailOtp.js';
 
+
+
+export const googleCallback = async(req,res)=>{
+    try {
+       const user = req.user;
+       const payload = {
+            id:user.id,
+            username:user.username
+        }
+        const token  = await genToken(payload);
+        res.cookie("token",token,{
+            maxAge:7 * 24 * 60 * 60 * 1000,
+            httpOnly:true,
+            sameSite:"strict",
+            secure:false
+        })
+        return res.status(200).json({message:"Login successfully"})
+    } catch (error) {
+        console.log("error in googleCallback controller:",error);
+        return res.status(500).json({message:"Internal server error"});
+    }
+}
+
+
 export const signUp = async (req,res)=>{
     try {
         const {username,email,master_Password} = req.body;

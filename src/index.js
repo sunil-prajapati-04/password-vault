@@ -3,10 +3,12 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
+import './middelware/google.js';
 import db from './lib/db.js';
 import { config } from 'dotenv';
 import authRouter from './routes/auth.routes.js';
 import vaultRouter from './routes/vault.routes.js';
+import passport from 'passport';
 
 config();
 const app = express();
@@ -17,6 +19,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(helmet());
+app.use(passport.use());
 
 
 app.use('/pV/auth',authRouter);
