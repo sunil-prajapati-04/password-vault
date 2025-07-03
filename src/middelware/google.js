@@ -1,15 +1,13 @@
 import passport from 'passport';
-import pkg from 'passport-google-oauth20';
+import GoogleStrategy from 'passport-google-oauth20';
 import User from '../models/auth.model.js';
 import {config} from 'dotenv';
 
 config();
 
-const {GoogleStrategy} = pkg;
-
 passport.use(new GoogleStrategy({
     clientID:process.env.Google_Client_Id,
-    clientSecrect:process.env.Google_Client_Secrect,
+    clientSecret:process.env.Google_Client_Secrect,
     callbackURL: "https://password-vault-21m8.onrender.com/pV/auth/google/callback"
 
 }, async(accessToken, refreshToken, profile, done)=>{
