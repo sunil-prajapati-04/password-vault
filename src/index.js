@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(helmet());
-app.use(passport.use());
+app.use(passport.initialize());
 
 
 app.use('/pV/auth',authRouter);

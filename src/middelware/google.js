@@ -8,7 +8,7 @@ config();
 passport.use(new GoogleStrategy({
     clientID:process.env.Google_Client_Id,
     clientSecrect:process.env.Google_Client_Secrect,
-    callbackUrl:"https://password-vault-21m8.onrender.com/pV/auth/google/callback"
+    callbackURL: "https://password-vault-21m8.onrender.com/pV/auth/google/callback"
 
 }, async(accessToken, refreshToken, profile, done)=>{
     try {
