@@ -41,3 +41,9 @@ password-vault/
 ├── .env # Environment variables
 ├── index.js # Express setup
 └── README.md
+
+==> Our server is online you can access it using this Url: https://password-vault-21m8.onrender.com
+==> you just have to put this url in Postman and navigate to any route 
+==> For example you can see this below image
+![image](https://github.com/user-attachments/assets/e693884b-2b77-4a5e-bcd5-0db9769c6bf3)
+
