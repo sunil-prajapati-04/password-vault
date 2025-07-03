@@ -1,9 +1,11 @@
 import passport from 'passport';
-import {GoogleStrategy} from 'passport-google-oauth20';
+import pkg from 'passport-google-oauth20';
 import User from '../models/auth.model.js';
 import {config} from 'dotenv';
 
 config();
+
+const {GoogleStrategy} = pkg;
 
 passport.use(new GoogleStrategy({
     clientID:process.env.Google_Client_Id,
